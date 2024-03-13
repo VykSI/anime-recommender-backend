@@ -11,10 +11,15 @@ app.use(bodyParser.json());
 app.use(cors({ origin: 'http://localhost:8081' }));
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/anime', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const uri =process.env.MONGODB_URI;
+
+// Connect to MongoDB Atlas
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('Connected to MongoDB Atlas'))
+.catch(err => console.error('Error connecting to MongoDB Atlas:', err));
 const User = mongoose.model('User', {
   username: String,
   password: String,
