@@ -15,7 +15,7 @@ app.use(cors({ origin: 'https://anime-recommender-frontend.vercel.app',
 
 // MongoDB connection
 const uri =process.env.MONGODB_URI;
-
+axios.defaults.timeout = 5000;
 // Connect to MongoDB Atlas
 mongoose.connect(uri, {
     useNewUrlParser: true,
@@ -112,7 +112,7 @@ app.get('/search', async (req, res) => {
     console.log(title);
     title = title.replace(/-/g, ' ');
     console.log(title);
-    axios.post('http://vyksi.pythonanywhere.com/recommender', { 'anime_name': title },timeout: 5000)
+    axios.post('http://vyksi.pythonanywhere.com/recommender', { 'anime_name': title })
       .then(async response => {
         const animeData = [];
         console.log(response);
