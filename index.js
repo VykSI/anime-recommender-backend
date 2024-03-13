@@ -15,7 +15,7 @@ app.use(cors({ origin: 'https://anime-recommender-frontend.vercel.app',
 
 // MongoDB connection
 const uri =process.env.MONGODB_URI;
-axios.defaults.timeout = 5000;
+axios.defaults.timeout = 500000;
 // Connect to MongoDB Atlas
 mongoose.connect(uri, {
     useNewUrlParser: true,
