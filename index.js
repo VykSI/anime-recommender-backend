@@ -8,7 +8,10 @@ const cors = require('cors');
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors({ origin: 'https://anime-recommender-frontend.vercel.app/' }));
+app.use(cors({ origin: 'https://anime-recommender-frontend.vercel.app',
+             methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+             }));
 
 // MongoDB connection
 const uri =process.env.MONGODB_URI;
