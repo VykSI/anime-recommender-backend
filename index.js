@@ -112,7 +112,7 @@ app.get('/search', async (req, res) => {
     console.log(title);
     title = title.replace(/-/g, ' ');
     console.log(title);
-    axios.post('http://vyksi.pythonanywhere.com/recommender', { 'anime_name': title })
+    axios.post('http://vyksi.pythonanywhere.com/recommender', { 'anime_name': title },timeout: 5000)
       .then(async response => {
         const animeData = [];
         console.log(response);
